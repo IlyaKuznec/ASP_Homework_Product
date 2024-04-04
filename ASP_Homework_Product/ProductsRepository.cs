@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ASP_Homework_Product
 {
-    public class ProductRepository
+    public class ProductsRepository
     {
         private static List<Product> products = new List<Product>()
         {
