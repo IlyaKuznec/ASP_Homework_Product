@@ -5,7 +5,7 @@ namespace ASP_Homework_Product
 {
     public class ProductRepository
     {
-        private List<Product> products = new List<Product>()
+        private static List<Product> products = new List<Product>()
         {
             new Product("Name1", 10, "Desc1"),
             new Product("Name2", 20, "Desc2"),
