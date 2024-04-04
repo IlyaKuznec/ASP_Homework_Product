@@ -9,14 +9,10 @@ namespace ASP_Homework_Product.Controllers
         {
             productRepository = new ProductRepository();
         }
-        public string Index(int id)
+        public IActionResult Index(int id)
         {
             var product = productRepository.TryGetById(id);
-            if (product == null)
-            {
-                return $"Продукта с id={id} не существует.";
-            }            
-            return $"{product}\n{product.Description}";
+            return View(product);
         }
     }
 }

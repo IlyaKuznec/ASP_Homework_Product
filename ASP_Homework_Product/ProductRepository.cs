@@ -9,10 +9,11 @@ namespace ASP_Homework_Product
     {
         private static List<Product> products = new List<Product>()
         {
-            new Product("Name1", 10, "Desc1"),
-            new Product("Name2", 20, "Desc2"),
-            new Product("Name3", 30, "Desc3"),
-            new Product("Name4", 40, "Desc4"),
+            new Product("Сандалестрел", 228, "Стреляет и что-то говорит", "/images/image1.png"),
+            new Product("Андрей", 499, "Башмак", "/images/image2.jpg"),
+            new Product("Продавец арбузов", 50, "Ну типа кот на арбузе", "/images/image3.gif"),
+            new Product("Мудрый Кувшин", 3999, "Скажет любую мудрость(по настроению)", "/images/image4.gif"),
+            new Product("Трюкачи и Лихачи", 100, "Любой трюк абсолютно везде и на чём угодно", "/images/image5.png"),            
         };
 
         public List<Product> GetAll()
