@@ -1,20 +1,31 @@
-﻿namespace ASP_Homework_Product.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ASP_Homework_Product.Models
 {
     public class Product
     {
         private static int instanceCounter = 0;
         public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Cost { get; set; }
+        [Required]
+        public string Title { get; set; }
+        [Required]
+        public string Author { get; set; }
+        [Required]
         public string Description { get; set; }
         
         public string ImagePath { get; set; }
 
-        public Product(string name, decimal cost, string description, string imagePath)
+        public Product() 
         {
             Id = instanceCounter;
-            Name = name;
-            Cost = cost;
+            instanceCounter += 1;
+        }
+
+        public Product(string name, string cost, string description, string imagePath)
+        {
+            Id = instanceCounter;
+            Title = name;
+            Author = cost;
             Description = description;
             instanceCounter += 1;
             ImagePath = imagePath;
@@ -22,7 +33,7 @@
 
         public override string ToString()
         {
-            return $"{Id}\n{Name}\n{Cost}";
+            return $"{Id}\n{Title}\n{Author}";
         }
     }
 }

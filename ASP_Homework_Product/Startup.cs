@@ -22,7 +22,11 @@ namespace ASP_Homework_Product
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>();
+            services.AddSingleton<ICartsRepository, CartsInMemoryRepository>();
+			services.AddSingleton<IOrdersRepository, OrdersInMemoryRepository>();
+            services.AddSingleton<IRolesRepository, RolesInMemoryRepository>();
+			services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

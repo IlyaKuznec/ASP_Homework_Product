@@ -1,0 +1,36 @@
+﻿<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <img href="/images/icon.png" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" />
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/images/icon.png" width="30" height="30"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Главная</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Каталог</a></li>
+                            <li><a class="dropdown-item" href="#">Популярное</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Полка 1</a></li>
+                            <li><a class="dropdown-item" href="#">Полка 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/cart/index">Корзина</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/account/login">Вход</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/orders">Администратор</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

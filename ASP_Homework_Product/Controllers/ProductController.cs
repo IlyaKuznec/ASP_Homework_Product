@@ -4,10 +4,10 @@ namespace ASP_Homework_Product.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductsRepository productRepository;
-        public ProductController()
+        private readonly IProductsRepository productRepository;
+        public ProductController(IProductsRepository productRepository)
         {
-            productRepository = new ProductsRepository();
+            this.productRepository = productRepository;
         }
         public IActionResult Index(int id)
         {

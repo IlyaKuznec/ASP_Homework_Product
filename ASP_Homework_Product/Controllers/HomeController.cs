@@ -11,14 +11,15 @@ namespace ASP_Homework_Product.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ProductsRepository productRepository;
-        public HomeController()
+        private readonly IProductsRepository productRepository;
+        
+        public HomeController(IProductsRepository productRepository)
         {
-            productRepository = new ProductsRepository();
+            this.productRepository = productRepository;            
         }
 
         public IActionResult Index()
-        {
+        {            
             var products = productRepository.GetAll();            
             return View(products);
         }

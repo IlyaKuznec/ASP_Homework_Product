@@ -5,19 +5,19 @@ using ASP_Homework_Product.Models;
 
 namespace ASP_Homework_Product
 {
-    public class CartsRepository
+    public class CartsInMemoryRepository : ICartsRepository
     {
-        private static List<Cart> carts = new List<Cart>();
+        private List<Cart> carts = new List<Cart>();
 
-        public static Cart TryGetByUserId(string userId)
+        public Cart TryGetByUserId(string userId)
         {
             return carts.FirstOrDefault(x => x.UserId == userId);
         }
 
-        public static void Add(Product product, string userId)
+        public void Add(Product product, string userId)
         {
             var existingCart = TryGetByUserId(userId);
-            if (existingCart == null) 
+            if (existingCart == null)
             {
                 var newCart = new Cart
                 {
@@ -39,7 +39,7 @@ namespace ASP_Homework_Product
             else
             {
                 var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == product.Id);
-                if (existingCartItem != null) 
+                if (existingCartItem != null)
                 {
                     existingCartItem.Amount += 1;
                 }
@@ -52,7 +52,31 @@ namespace ASP_Homework_Product
                         Product = product
                     });
                 }
-            }            
+            }
         }
-    }
+
+		public void DecreaseAmount(int productId, string userId)
+		{
+			var existingCart = TryGetByUserId(userId);
+						
+			var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Product.Id == productId);
+			if (existingCartItem == null)
+			{
+				return;
+			}
+
+            existingCartItem.Amount -= 1;
+
+            if (existingCartItem.Amount == 0)
+            {
+                existingCart.Items.Remove(existingCartItem);
+            }						
+		}
+
+		public void Clear(string userId)
+		{
+			var existingCart = TryGetByUserId(userId);
+            carts.Remove(existingCart);
+		}
+	}
 }

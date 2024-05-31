@@ -1,0 +1,38 @@
+﻿@model Product
+
+<form method="post">
+    <div>
+        <h3>Изменение продукта</h3>
+    </div>
+
+    <div class="text-danger font-weight-bold" asp-validation-summary="All"></div>
+
+    <input type="hidden" name="Id" value="@Model?.Id" />
+    <div class="row">
+        <div class="col-6">
+            <label asp-for="Title"></label><br />
+            <input class="form-control" asp-for="Title" value="@Model?.Title"/>
+            <span asp-validation-for="Title" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label asp-for="Description"></label><br />
+            <input class="form-control" asp-for="Description" value="@Model?.Description" />
+            <span asp-validation-for="Description" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <label asp-for="Author"></label><br />
+            <input class="form-control" asp-for="Author" value="@Model?.Author" />
+            <span asp-validation-for="Author" />
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" asp-controller="Admin" asp-action="EditProduct">Изменить</button>
+    </div>
+</form>

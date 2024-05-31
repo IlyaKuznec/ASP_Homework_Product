@@ -1,41 +1,50 @@
 ﻿@model Cart
 
-@if (Model == null)
+@if (Model == null || Model.Items.Count == 0)
 {
-	<h3>Корзина пустая</h3>
+	<h3 class="text-center">Корзина пустая</h3>
+	<div class="text-center">
+		<a class="btn btn-primary my-5" href="/home/index" role="button">Начать покупки</a>		
+	</div>
 }
 else
 {
 	<div class="row">
 		<div class="col">
-			<table class="table">
+			<table class="table table-dark">
 				<thead>
 					<tr>
 						<th>Название</th>
-						<th>Цена руб</th>
-						<th>Количество</th>
-						<th>Стоимость руб</th>
+						<th>Автор(ы)</th>
+						<th>Количество</th>						
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach (var item in Model.Items)
 					{
 						<tr>
-							<td>@item.Product.Name</td>
-							<td>@item.Product.Cost</td>
-							<td>@item.Amount</td>
-							<td>@item.Cost</td>
+							<td>@item.Product.Title</td>
+							<td>@item.Product.Author</td>
+							<td>@item.Amount</td>							
+							<td>
+								<a class="btn btn-secondary" href="/cart/add?productId=@item.Product.Id" role="button">+</a>
+							</td>
+							<td>
+								<a class="btn btn-secondary" href="/cart/decreaseAmount?productId=@item.Product.Id" role="button">-</a>
+							</td>
 						</tr>
 					}
 				</tbody>
 			</table>
 			<div class="text-right">
-				<h3>Итого:</h3>
-				<h3>@Model.Cost</h3>
+				<h3>Итого:</h3>				
 			</div>
 			<div class="text-center">
 				<a class="btn btn-primary" href="/home/index" role="button">Продолжить покупки</a>
-				<a class="btn btn-success" href="#" role="button">Оформить заказ</a>
+				<a class="btn btn-success" href="/order/index" role="button">Оформить заказ</a>
+				<a class="btn btn-warning" href="/cart/clear" role="button">Очистить корзину</a>
 			</div>
 		</div>
 	</div>
